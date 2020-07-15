@@ -7,7 +7,7 @@
 @Description    :  
 @CreateTime     :  2020/6/22 13:53
 ------------------------------------
-@ModifyTime     :  
+@ModifyTime     :  在旋转数组中查找一个固定的数。
 """
 
 
@@ -20,18 +20,16 @@ def rotate_search_target(alist, target):
         mid = left + (right - left) // 2
         if alist[mid] == target:
             return mid
-
-        if alist[left] < alist[mid]:
-            if alist[left] <= target and target <= alist[mid]:
-                right = mid
-            else:
-                left = mid
+        # if alist[mid] < target <= alist[right]:
+        #     left = mid + 1
+        # else:
+        #     right = mid
+        # 或者
+        if alist[mid] <= target <= alist[right]:
+            left = mid
         else:
-            # alist[left] >= alist[mid]
-            if alist[mid] <= target and target <= alist[right]:
-                left = mid
-            else:
-                right = mid
+            right = mid
+
     if alist[left] == target:
         return left
     if alist[right] == target:
