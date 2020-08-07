@@ -15,6 +15,13 @@
 
 class Solution:
     def buddyStrings(self, A: str, B: str) -> bool:
+        '''
+        时间复杂度：O(N),其中 N 是 A 和 B 的长度。
+        空间复杂度：O(1)。
+        :param A:
+        :param B:
+        :return:
+        '''
         if len(A) != len(B):
             return False
         if A == B:
@@ -26,7 +33,7 @@ class Solution:
             return False
         else:
             pairs = []
-            for a, b in itertools.izip(A, B):
+            for a, b in zip(A, B):
                 if a != b:
                     pairs.append((a, b))
                 if len(pairs) >= 3: return False
@@ -34,7 +41,22 @@ class Solution:
 
 
 def main():
-    pass
+    solution = Solution()
+    A = "ab"
+    B = "ba"
+    print(solution.buddyStrings(A, B))
+    A = "ab"
+    B = "ab"
+    print(solution.buddyStrings(A, B))
+    A = "aa"
+    B = "aa"
+    print(solution.buddyStrings(A, B))
+    A = "aaaaaaabc"
+    B = "aaaaaaacb"
+    print(solution.buddyStrings(A, B))
+    A = ""
+    B = "aa"
+    print(solution.buddyStrings(A, B))
 
 
 if __name__ == '__main__':
